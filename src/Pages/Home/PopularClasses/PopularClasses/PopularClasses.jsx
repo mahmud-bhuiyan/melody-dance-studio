@@ -5,13 +5,10 @@ const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch("danceClasses.json")
+    fetch("classes.json")
       .then((res) => res.json())
       .then((data) => {
-        const popularClasses = data.sort(
-          (a, b) => b.no_students - a.no_students
-        );
-        setClasses(popularClasses);
+        setClasses(data);
       });
   }, []);
 

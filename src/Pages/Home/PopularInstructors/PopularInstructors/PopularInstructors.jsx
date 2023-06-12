@@ -5,21 +5,10 @@ const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetch("instructor.json")
+    fetch("classes.json")
       .then((res) => res.json())
       .then((data) => {
-        const popularInstructors = data.sort((a, b) => {
-          let totalStudentsA = a.instructor.class_info.reduce(
-            (sum, classData) => sum + classData.no_students,
-            0
-          );
-          let totalStudentsB = b.instructor.class_info.reduce(
-            (sum, classData) => sum + classData.no_students,
-            0
-          );
-          return totalStudentsB - totalStudentsA;
-        });
-        setInstructors(popularInstructors);
+        setInstructors(data);
       });
   }, []);
 

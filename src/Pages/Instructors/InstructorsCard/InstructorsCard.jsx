@@ -1,4 +1,6 @@
 const InstructorsCard = ({ instructor }) => {
+  const { instructorName, instructorEmail, instructorImage, className } =
+    instructor;
   return (
     <>
       <div
@@ -7,27 +9,23 @@ const InstructorsCard = ({ instructor }) => {
       >
         <figure className="sm:pl-10 pt-8 md:pt-0">
           <img
-            src={instructor.instructor.image}
-            alt={instructor.instructor.name}
+            src={instructorImage}
+            alt={instructorName}
             className="h-48 w-48 rounded-full mx-auto"
           />
         </figure>
 
         <div className="card-body">
-          <h2 className="card-title">{instructor.instructor.name}</h2>
+          <h2 className="card-title">{instructorName}</h2>
           <p>
-            <span className="font-bold">Email:</span>{" "}
-            {instructor.instructor.email}
+            <span className="font-bold">Email:</span> {instructorEmail}
           </p>
           <p>
-            <span className="font-bold">Classes taken:</span>{" "}
-            {instructor.instructor.no_of_classes}
+            <span className="font-bold">Classes taken:</span>
           </p>
           <p>
-            <span className="font-bold">Classes Name:</span>{" "}
-            {instructor.instructor.class_info
-              .map((classData) => classData.class_name)
-              .join(", ")}
+            <span className="font-bold">Classes Name: </span>
+            {className}
           </p>
           <div className="card-actions justify-end">
             <button className="btn btn-primary btn-sm md:btn-md w-full sm:w-auto">
