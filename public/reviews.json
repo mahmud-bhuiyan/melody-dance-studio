@@ -1,0 +1,42 @@
+[
+  {
+    "_id": 1,
+    "name": "Rahim Ahmed",
+    "email": "rahim@example.com",
+    "image": "https://i.ibb.co/RvKc9Hh/review-1.png",
+    "review": "I absolutely loved my experience at Melody Dance Studio. The instructors are highly skilled and passionate about what they do. I learned a lot and had a great time!",
+    "rating": 5
+  },
+  {
+    "_id": 2,
+    "name": "Sneha Khan",
+    "email": "sneha@example.com",
+    "image": "https://i.ibb.co/Fbrq1xB/review-4.png",
+    "review": "Melody Dance Studio is a fantastic place to learn and explore different dance styles. The atmosphere is welcoming, and the instructors are incredibly talented. I highly recommend it!",
+    "rating": 4
+  },
+  {
+    "_id": 3,
+    "name": "Kamal Hussain",
+    "email": "kamal@example.com",
+    "image": "https://i.ibb.co/jhz7gNM/review-3.png",
+    "review": "As someone who had no prior dance experience, I was nervous at first, but the instructors at Melody Dance Studio made me feel comfortable and helped me build confidence. I'm grateful for the amazing learning environment!",
+    "rating": 4.5
+  },
+  {
+    "_id": 4,
+    "name": "Farhana Islam",
+    "email": "farhana@example.com",
+    "image": "https://i.ibb.co/T2GjsLt/instructor-8.png",
+    "review": "Melody Dance Studio offers a wide variety of dance classes that cater to all skill levels. The instructors are patient and encouraging, and they create a fun and inclusive atmosphere. I've made wonderful friends here!",
+    "rating": 4
+  },
+  {
+    "_id": 5,
+    "name": "Imran Rahman",
+    "email": "imran@example.com",
+    "image": "https://i.ibb.co/dkK4mt7/review-2.png",
+    "review": "I've been attending Melody Dance Studio for several months now, and it has been an incredible journey. The studio has helped me improve my dance skills significantly. The facilities are top-notch, and the staff is friendly. Highly recommended!",
+    "rating": 5
+  }
+]
