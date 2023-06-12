@@ -1,13 +1,13 @@
-import JoinUs from "../../../Components/JoinUs/JoinUs";
 import Banner from "../Banner/Banner";
-import Classes from "../Classes/Classes";
+import JoinUs from "../JoinUs/JoinUs";
+import PopularClasses from "../PopularClasses/PopularClasses/PopularClasses";
 
 const Home = () => {
   return (
     <div>
       <Banner></Banner>
       <JoinUs></JoinUs>
-      <Classes></Classes>
+      <PopularClasses></PopularClasses>
     </div>
   );
 };
