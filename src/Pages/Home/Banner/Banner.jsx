@@ -104,18 +104,18 @@ const Banner = () => {
           <div key={index}>
             <img src={image.url} alt="" />
             <div
-              className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white"
+              className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white "
               ref={(el) => (textRef.current[index] = el)}
             >
               <div className="text-2xl font-bold p-4">{image.text}</div>
               <div
-                className="text-lg p-4"
+                className="text-lg p-4 hidden sm:flex"
                 ref={(el) => (subtextRef.current[index] = el)}
               >
                 {image.subtext}
               </div>
               <button
-                className="text-lg bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="text-lg bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hidden sm:flex"
                 ref={(el) => (buttonRef.current[index] = el)}
               >
                 Join Us

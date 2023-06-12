@@ -1,0 +1,155 @@
+[
+  {
+    "_id": "1",
+    "name": "Indian freestyle",
+    "picture": "https://i.ibb.co/xY08QZp/dance-b-5.png",
+    "details": "Explore the art of Indian freestyle dance",
+    "duration": "1 hour",
+    "instructor": {
+      "image": "https://i.ibb.co/T2GjsLt/instructor-8.png",
+      "name": "Ayesha Rahman",
+      "email": "ayesha.rahman@example.com",
+      "no_of_classes": 3,
+      "class_info": [
+        {
+          "class_name": "Hip Hop",
+          "no_students": 15
+        },
+        {
+          "class_name": "Bollywood",
+          "no_students": 10
+        },
+        {
+          "class_name": "Contemporary",
+          "no_students": 20
+        }
+      ]
+    }
+  },
+  {
+    "_id": "2",
+    "name": "Kathak",
+    "picture": "https://i.ibb.co/NtSzypN/dance-b-9.png",
+    "details": "Discover the grace and elegance of Kathak",
+    "duration": "1.5 hours",
+    "instructor": {
+      "image": "https://i.ibb.co/qnQG5LH/instructor-7.png",
+      "name": "Mohammad Ali",
+      "email": "mohammad.ali@example.com",
+      "no_of_classes": 2,
+      "class_info": [
+        {
+          "class_name": "Kathak Beginners",
+          "no_students": 8
+        },
+        {
+          "class_name": "Kathak Advanced",
+          "no_students": 12
+        }
+      ]
+    }
+  },
+  {
+    "_id": "3",
+    "name": "Kuchipudi",
+    "picture": "https://i.ibb.co/Qvvy0dJ/dance-b-6.png",
+    "details": "Experience the vibrant traditions of Kuchipudi",
+    "duration": "1.5 hours",
+    "instructor": {
+      "image": "https://i.ibb.co/ncgHsRr/instructor-9.png",
+      "name": "Fatima Khan",
+      "email": "fatima.khan@example.com",
+      "no_of_classes": 1,
+      "class_info": [
+        {
+          "class_name": "Kuchipudi Basics",
+          "no_students": 18
+        }
+      ]
+    }
+  },
+  {
+    "_id": "4",
+    "name": "Odissi",
+    "picture": "https://i.ibb.co/NWVdFGg/dance-b-7.png",
+    "details": "Immerse yourself in the classical art of Odissi",
+    "duration": "2 hours",
+    "instructor": {
+      "image": "https://i.ibb.co/M2yV05y/instructor-4.png",
+      "name": "Rahim Ahmed",
+      "email": "rahim.ahmed@example.com",
+      "no_of_classes": 2,
+      "class_info": [
+        {
+          "class_name": "Odissi Foundations",
+          "no_students": 10
+        },
+        {
+          "class_name": "Odissi Advanced",
+          "no_students": 15
+        }
+      ]
+    }
+  },
+  {
+    "_id": "5",
+    "name": "Manipuri",
+    "picture": "https://i.ibb.co/4SJ9rY8/dance-b-8.png",
+    "details": "Explore the enchanting world of Manipuri dance",
+    "duration": "1.5 hours",
+    "instructor": {
+      "image": "https://i.ibb.co/fMHDwGY/instructor-10.png",
+      "name": "Nazia Khan",
+      "email": "nazia.khan@example.com",
+      "no_of_classes": 1,
+      "class_info": [
+        {
+          "class_name": "Manipuri Fundamentals",
+          "no_students": 12
+        }
+      ]
+    }
+  },
+  {
+    "_id": "6",
+    "name": "Mohiniyattam",
+    "picture": "https://i.ibb.co/1ZpvDX4/dance-b-3.png",
+    "details": "Witness the beauty and grace of Mohiniyattam",
+    "duration": "1.5 hours",
+    "instructor": {
+      "image": "https://i.ibb.co/vXkX1hK/instructor-5.png",
+      "name": "Abdul Rahman",
+      "email": "abdul.rahman@example.com",
+      "no_of_classes": 1,
+      "class_info": [
+        {
+          "class_name": "Mohiniyattam Essentials",
+          "no_students": 10
+        }
+      ]
+    }
+  },
+  {
+    "_id": "7",
+    "name": "Balled",
+    "picture": "https://i.ibb.co/RCx4qQz/dance-b-4.png",
+    "details": "Experience the ancient art of Balled",
+    "duration": "2 hours",
+    "instructor": {
+      "image": "https://i.ibb.co/1b2KzqH/instructor-6.png",
+      "name": "Sadia Rahman",
+      "email": "sadia.rahman@example.com",
+      "no_of_classes": 2,
+      "class_info": [
+        {
+          "class_name": "Balled Intro",
+          "no_students": 6
+        },
+        {
+          "class_name": "Balled Advanced",
+          "no_students": 8
+        }
+      ]
+    }
+  }
+]
