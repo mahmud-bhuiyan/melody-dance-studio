@@ -1,16 +1,8 @@
-import { useEffect, useState } from "react";
 import PopularClassesCard from "../PopularClassesCard/PopularClassesCard";
+import useClasses from "../../../../Hooks/useClasses";
 
 const PopularClasses = () => {
-  const [classes, setClasses] = useState([]);
-
-  useEffect(() => {
-    fetch("classes.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setClasses(data);
-      });
-  }, []);
+  const [classes] = useClasses();
 
   return (
     <div className="py-20">
