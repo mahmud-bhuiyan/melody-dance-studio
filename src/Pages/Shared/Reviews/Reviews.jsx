@@ -41,15 +41,13 @@ const Reviews = () => {
         {reviews.map((review, index) => (
           <SwiperSlide key={index}>
             <div className="grid md:grid-cols-12 px-6">
-              <div className="col-span-12 md:col-span-4">
+              <div className="col-span-12">
                 <img
                   src={review.image}
                   alt={review.name}
                   className="h-36 w-36 rounded-lg mx-auto"
                 />
-                <h4>{review.name}</h4>
-              </div>
-              <div className="col-span-12 md:col-span-8 md:pr-28">
+                <h4 className="my-4">{review.name}</h4>
                 <div className="flex justify-center">
                   <Rating
                     style={{ maxWidth: 180 }}
@@ -57,11 +55,11 @@ const Reviews = () => {
                     readOnly
                   />
                 </div>
-                <div className="flex flex-col justify-center items-center mt-6">
+                <div className="flex flex-col justify-center items-center my-6 px-4 md:px-24">
                   <p className="flex items-center pb-8">
-                    <FaQuoteLeft className="text-6xl" />{" "}
+                    <FaQuoteLeft className="text-4xl" />{" "}
                     <span className="md:px-4">{review.review}</span>
-                    <FaQuoteRight className="text-6xl" />
+                    <FaQuoteRight className="text-4xl" />
                   </p>
                 </div>
               </div>
