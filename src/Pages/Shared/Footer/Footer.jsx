@@ -1,7 +1,10 @@
-import logo from "../../../../../../public/logo.png";
+import logo from "../../../../public/logo.png";
 import {
+  FaEnvelope,
   FaFacebookSquare,
   FaInstagram,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
@@ -35,7 +38,7 @@ const Footer = () => {
           </a>
         </div>
         <div>
-          <span className="footer-title">Company</span>
+          <span className="footer-title">Links</span>
           <a className="link link-hover" href="#">
             About us
           </a>
@@ -48,6 +51,23 @@ const Footer = () => {
           <a className="link link-hover" href="#">
             Testimonials
           </a>
+        </div>
+        <div>
+          <span className="footer-title">Contact Us</span>
+          <div className="flex items-center gap-2">
+            <FaMapMarkerAlt />
+            <p>
+              ABC Tower, Dhaka, <br className="hidden md:flex" /> Bangladesh.
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <FaPhoneAlt />
+            <p>+8801234567890</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <FaEnvelope />
+            <p>info@example.com</p>
+          </div>
         </div>
         <div>
           <span className="footer-title">Social Links</span>
@@ -67,6 +87,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+      <hr />
       <footer className="footer items-center p-4 bg-neutral text-neutral-content">
         <div className="items-center grid-flow-col">
           <p>© {currentYear} Melody Dance Studio - All rights reserved</p>
