@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -14,13 +15,15 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
-    signIn(email, password)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -31,6 +34,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        reset();
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -70,21 +74,27 @@ const Login = () => {
                 Login
               </h1>
 
-              <form onSubmit={handleLogin}>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control">
                   <input
                     type="email"
+                    {...register("email", { required: true })}
                     name="email"
                     placeholder="Email"
                     className="input input-sm input-bordered mb-4"
-                    required
                   />
+                  {errors.email && (
+                    <span className="text-red-500 mt-1 ml-1">
+                      Email is required
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-control mb-4">
                   <div className="relative">
                     <input
                       type={showPassword ? "text" : "password"}
+                      {...register("password", { required: true })}
                       name="password"
                       placeholder="Password"
                       className="input input-sm input-bordered pr-10 w-full"
@@ -99,6 +109,11 @@ const Login = () => {
                         <FaRegEye size={20} />
                       )}
                     </div>
+                    {errors.password?.type === "required" && (
+                      <p className="text-red-500 mt-1 ml-1" role="alert">
+                        Password is required
+                      </p>
+                    )}
                   </div>
                 </div>
 
