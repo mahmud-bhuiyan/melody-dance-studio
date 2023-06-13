@@ -1,15 +1,48 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successful!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage =
+          errorCode === "auth/wrong-password"
+            ? "Incorrect password"
+            : errorCode === "auth/user-not-found"
+            ? "No user found with this email"
+            : error.message;
+        console.log(errorMessage);
+        setError(errorMessage);
+      });
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -76,6 +109,8 @@ const Login = () => {
                   />
                 </div>
               </form>
+
+              <p className="text-center text-red-600 font-bold">{error}</p>
 
               <p className="text-center my-4">
                 New to Melody Dance Studio?{" "}
