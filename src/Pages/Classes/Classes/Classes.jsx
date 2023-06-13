@@ -2,14 +2,55 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useData from "../../../Hooks/useData";
+import Swal from "sweetalert2";
+import useCart from "../../../Hooks/useCart";
 
 const Classes = () => {
   const [data] = useData();
   const [classes] = [data];
   const { user } = useContext(AuthContext);
+  const [enrolled, refetch] = useCart();
 
-  const handleSelectClass = (classId) => {
-    console.log(classId);
+  const handleJoinClass = (classItem) => {
+    console.log(classItem);
+
+    const { _id, classId, className, classImage, instructorName, price } =
+      classItem;
+
+    if (user && user.email) {
+      const enrolledClass = {
+        enrolledClassId: _id,
+        classId,
+        className,
+        classImage,
+        instructorName,
+        price,
+        email: user.email,
+      };
+
+      fetch("http://localhost:7000/enrolled", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(enrolledClass),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            refetch();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Successfully enrolled for the class.",
+              showConfirmButton: false,
+              timer: 1000,
+            });
+          } else {
+            console.log("An error occurred");
+          }
+        });
+    }
   };
 
   const isLoggedIn = !!user;
@@ -20,7 +61,6 @@ const Classes = () => {
       <Helmet>
         <title>Classes | Melody Dance Studio</title>
       </Helmet>
-
       <div
         className="bg-cover bg-center text-center"
         style={{
@@ -29,7 +69,10 @@ const Classes = () => {
           borderBottom: "5px solid #EA906C",
         }}
       >
-        <h3 className="text-4xl font-bold pt-32 text-white">Classes</h3>
+        <h3 className="text-4xl font-bold pt-28 text-white">Classes</h3>
+        <h5 className="text-lg font-bold text-white">
+          (Enrolled: {enrolled?.length})
+        </h5>
       </div>
 
       <div>
@@ -64,21 +107,21 @@ const Classes = () => {
                   <p className="">Price: {classItem.price}</p>
                   <div className="card-actions">
                     <button
-                      className={`btn btn-primary ${
+                      className={`btn btn-sm btn-primary ${
                         classItem.availableSeats === 0 ||
                         (isAdmin && isLoggedIn) ||
                         !isLoggedIn
                           ? "btn-disabled"
                           : ""
                       }`}
-                      onClick={() => handleSelectClass(classItem.classId)}
+                      onClick={() => handleJoinClass(classItem)}
                       disabled={
                         classItem.availableSeats === 0 ||
                         (isAdmin && isLoggedIn) ||
                         !isLoggedIn
                       }
                     >
-                      {isLoggedIn ? "Select" : "Log in to Select"}
+                      {isLoggedIn ? "Enroll" : "Log in to Select"}
                     </button>
                   </div>
                 </div>
