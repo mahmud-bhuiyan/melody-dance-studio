@@ -3,7 +3,7 @@ import logo from "../../../../public/logo.png";
 import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
-  const user = true;
+  const user = false;
 
   const navLinks = (
     <>
