@@ -1,17 +1,10 @@
-import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import InstructorsCard from "../InstructorsCard/InstructorsCard";
+import useData from "../../../Hooks/useData";
 
 const Instructors = () => {
-  const [instructors, setInstructors] = useState([]);
-
-  useEffect(() => {
-    fetch("classes.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setInstructors(data);
-      });
-  }, []);
+  const [data] = useData();
+  const [instructors] = [data];
 
   return (
     <div>

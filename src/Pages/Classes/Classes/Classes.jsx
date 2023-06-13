@@ -1,10 +1,11 @@
 import { Helmet } from "react-helmet-async";
-import useClasses from "../../../Hooks/useClasses";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import useData from "../../../Hooks/useData";
 
 const Classes = () => {
-  const [classes] = useClasses();
+  const [data] = useData();
+  const [classes] = [data];
   const { user } = useContext(AuthContext);
 
   const handleSelectClass = (classId) => {

@@ -1,8 +1,9 @@
 import PopularClassesCard from "../PopularClassesCard/PopularClassesCard";
-import useClasses from "../../../../Hooks/useClasses";
+import useData from "../../../../Hooks/useData";
 
 const PopularClasses = () => {
-  const [classes] = useClasses();
+  const [data] = useData();
+  const [classes] = [data];
 
   return (
     <div className="py-20">

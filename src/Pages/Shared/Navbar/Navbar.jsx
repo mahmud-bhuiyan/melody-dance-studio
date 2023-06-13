@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../../public/logo.png";
 import { FaUser } from "react-icons/fa";
 import { useContext } from "react";
@@ -20,28 +20,44 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink exact to="/" activeClassName="active-link">
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/contact">Contact Us</Link>
+        <NavLink exact to="/contact" activeClassName="active-link">
+          Contact Us
+        </NavLink>
       </li>
       <li>
-        <Link to="/instructors" className="nav-link">
+        <NavLink
+          to="/instructors"
+          activeClassName="active-link"
+          className="nav-link"
+        >
           Instructors
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/classes" className="nav-link">
+        <NavLink
+          to="/classes"
+          activeClassName="active-link"
+          className="nav-link"
+        >
           Classes
-        </Link>
+        </NavLink>
       </li>
 
       {user ? (
         <>
           <li>
-            <Link to="/dashboard" className="nav-link">
+            <NavLink
+              to="dashboard/instructor"
+              activeClassName="active-link"
+              className="nav-link"
+            >
               Dashboard
-            </Link>
+            </NavLink>
           </li>
           <li>
             <button onClick={handleLogOut}>Logout</button>
@@ -50,10 +66,14 @@ const Navbar = () => {
       ) : (
         <>
           <li>
-            <Link to="/signup">Sign Up</Link>
+            <NavLink to="/signup" activeClassName="active-link">
+              Sign Up
+            </NavLink>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <NavLink to="/login" activeClassName="active-link">
+              Login
+            </NavLink>
           </li>
         </>
       )}
@@ -105,11 +125,15 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <NavLink
+          to="/"
+          className="btn btn-ghost normal-case text-xl"
+          activeClassName="active-link"
+        >
           <img className="rounded-full w-10 h-10" src={logo} alt="" />
           <span className="hidden md:block">Melody Dance Studio</span>
           <span className="md:hidden">MDS</span>
-        </Link>
+        </NavLink>
       </div>
       <div className="ml-auto hidden lg:flex items-center space-x-2">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>

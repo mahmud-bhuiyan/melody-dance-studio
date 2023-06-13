@@ -2,17 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import anime from "animejs";
+import useData from "../../../Hooks/useData";
 
 const Banner = () => {
-  const [classes, setClasses] = useState([]);
-
-  useEffect(() => {
-    fetch("classes.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setClasses(data);
-      });
-  }, []);
+  const [data] = useData();
+  const [classes] = [data];
 
   const [activeSlide, setActiveSlide] = useState(null);
   const textRef = useRef([]);

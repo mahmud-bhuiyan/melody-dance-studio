@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 
-const useClasses = () => {
-  const [classes, setClasses] = useState([]);
+const useData = () => {
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("classes.json")
       .then((res) => res.json())
       .then((data) => {
-        setClasses(data);
+        setData(data);
         setLoading(false);
       });
   }, []);
-  return [classes, loading];
+  return [data, loading];
 };
 
-export default useClasses;
+export default useData;

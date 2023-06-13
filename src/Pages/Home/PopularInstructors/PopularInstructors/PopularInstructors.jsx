@@ -1,16 +1,9 @@
-import { useEffect, useState } from "react";
 import PopularInstructorsCard from "../PopularInstructorsCard/PopularInstructorsCard";
+import useData from "../../../../Hooks/useData";
 
 const PopularInstructors = () => {
-  const [instructors, setInstructors] = useState([]);
-
-  useEffect(() => {
-    fetch("classes.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setInstructors(data);
-      });
-  }, []);
+  const [data] = useData();
+  const [instructors] = [data];
 
   return (
     <>
