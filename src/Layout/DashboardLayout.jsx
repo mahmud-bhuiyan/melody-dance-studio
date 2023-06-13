@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import {
   FaBars,
   FaBook,
+  FaHome,
   FaShoppingBag,
   FaShoppingCart,
   FaUsers,
@@ -9,6 +10,9 @@ import {
 import logo from "../../public/logo.png";
 
 const DashboardLayout = () => {
+  const isAdmin = true;
+  // const isAdmin = false;
+
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="drawer lg:drawer-open">
@@ -20,18 +24,14 @@ const DashboardLayout = () => {
           >
             <FaBars />
           </label>
-          <Outlet></Outlet>
+          <Outlet />
         </div>
         <div className="drawer-side bg-slate-200">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-60 text-base-content">
             {/* website logo */}
             <li className="mb-2 sm:mb-6 ">
-              <NavLink
-                to="/"
-                className="btn btn-ghost normal-case text-xl"
-                activeClassName="active-link"
-              >
+              <NavLink to="/" className="btn btn-ghost normal-case text-xl">
                 <img className="rounded-full w-10 h-10" src={logo} alt="" />
                 <span className="hidden md:block">Melody Dance Studio</span>
                 <span className="md:hidden">MDS</span>
@@ -40,96 +40,107 @@ const DashboardLayout = () => {
 
             <div className="divider"></div>
 
-            {/* Student Dashboard */}
-            <li>
-              <NavLink
-                exact
-                to="/selected-classes"
-                activeClassName="active-link"
-                className="flex items-center"
-              >
-                <FaShoppingCart className="mr-2" />
-                My Selected Classes
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                exact
-                to="/dashboard/enrolled"
-                activeClassName="active-link"
-                className="flex items-center"
-              >
-                <FaShoppingCart className="mr-2" />
-                My Enrolled Classes
-              </NavLink>
-            </li>
-
-            {/* Instructor Dashboard */}
-            <li>
-              <NavLink
-                exact
-                to="/add-class"
-                activeClassName="active-link"
-                className="flex items-center"
-              >
-                <FaBook className="mr-2" />
-                Add a Class
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                exact
-                to="/my-classes"
-                activeClassName="active-link"
-                className="flex items-center"
-              >
-                <FaUsers className="mr-2" />
-                My Classes
-              </NavLink>
-            </li>
-
-            {/* Admin Dashboard */}
-            <li>
-              <NavLink
-                exact
-                to="/manage-classes"
-                activeClassName="active-link"
-                className="flex items-center"
-              >
-                <FaShoppingBag className="mr-2" />
-                Manage Classes
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                exact
-                to="/manage-users"
-                activeClassName="active-link"
-                className="flex items-center"
-              >
-                <FaUsers className="mr-2" />
-                Manage Users
-              </NavLink>
-            </li>
+            {isAdmin ? (
+              <>
+                <li>
+                  <NavLink
+                    exact="true"
+                    to="/dashboard/home"
+                    className="flex items-center"
+                  >
+                    <FaHome className="mr-2" />
+                    Admin Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    exact="true"
+                    to="/dashboard/allusers"
+                    className="flex items-center"
+                  >
+                    <FaHome className="mr-2" />
+                    All Users
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    exact="true"
+                    to="/manage-classes"
+                    className="flex items-center"
+                  >
+                    <FaShoppingBag className="mr-2" />
+                    Manage Classes
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    exact="true"
+                    to="/manage-users"
+                    className="flex items-center"
+                  >
+                    <FaUsers className="mr-2" />
+                    Manage Users
+                  </NavLink>
+                </li>
+                {/* Instructor Dashboard */}
+                <li>
+                  <NavLink
+                    exact="true"
+                    to="/add-class"
+                    className="flex items-center"
+                  >
+                    <FaBook className="mr-2" />
+                    Add a Class
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    exact="true"
+                    to="/my-classes"
+                    className="flex items-center"
+                  >
+                    <FaUsers className="mr-2" />
+                    My Classes
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <NavLink
+                    exact="true"
+                    to="/selected-classes"
+                    className="flex items-center"
+                  >
+                    <FaShoppingCart className="mr-2" />
+                    My Selected Classes
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    exact="true"
+                    to="/dashboard/enrolled"
+                    className="flex items-center"
+                  >
+                    <FaShoppingCart className="mr-2" />
+                    My Enrolled Classes
+                  </NavLink>
+                </li>
+              </>
+            )}
 
             <div className="divider"></div>
 
             <li className="mb-2">
-              <NavLink
-                exact
-                to="/"
-                activeClassName="active-link"
-                className="flex items-center"
-              >
+              <NavLink exact="true" to="/" className="flex items-center">
                 <FaBook className="mr-2" />
                 Home
               </NavLink>
             </li>
             <li className="mb-2">
               <NavLink
-                exact
+                exact="true"
                 to="/instructors"
-                activeClassName="active-link"
                 className="flex items-center"
               >
                 <FaBook className="mr-2" />

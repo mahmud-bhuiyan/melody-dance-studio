@@ -20,19 +20,19 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink exact to="/" activeClassName="active-link">
+        <NavLink exact="true" to="/" activeclassname="active-link">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink exact to="/contact" activeClassName="active-link">
+        <NavLink exact="true" to="/contact" activeclassname="active-link">
           Contact Us
         </NavLink>
       </li>
       <li>
         <NavLink
           to="/instructors"
-          activeClassName="active-link"
+          activeclassname="active-link"
           className="nav-link"
         >
           Instructors
@@ -41,7 +41,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/classes"
-          activeClassName="active-link"
+          activeclassname="active-link"
           className="nav-link"
         >
           Classes
@@ -53,7 +53,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="dashboard/enrolled"
-              activeClassName="active-link"
+              activeclassname="active-link"
               className="nav-link"
             >
               Dashboard
@@ -66,12 +66,12 @@ const Navbar = () => {
       ) : (
         <>
           <li>
-            <NavLink to="/signup" activeClassName="active-link">
+            <NavLink to="/signup" activeclassname="active-link">
               Sign Up
             </NavLink>
           </li>
           <li>
-            <NavLink to="/login" activeClassName="active-link">
+            <NavLink to="/login" activeclassname="active-link">
               Login
             </NavLink>
           </li>
@@ -128,7 +128,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className="btn btn-ghost normal-case text-xl"
-          activeClassName="active-link"
+          activeclassname="active-link"
         >
           <img className="rounded-full w-10 h-10" src={logo} alt="" />
           <span className="hidden md:block">Melody Dance Studio</span>
