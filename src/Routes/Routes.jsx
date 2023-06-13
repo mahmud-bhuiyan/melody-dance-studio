@@ -9,6 +9,8 @@ import Signup from "../Pages/Signup/Signup";
 
 import DashboardLayout from "../Layout/DashboardLayout";
 import Instructor from "../Pages/Dashboard/Instructor/Instructor";
+import MyCart from "../Pages/Dashboard/MyCart/MyCart";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -40,11 +42,19 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "instructor",
         element: <Instructor></Instructor>,
+      },
+      {
+        path: "enrolled",
+        element: <MyCart></MyCart>,
       },
     ],
   },

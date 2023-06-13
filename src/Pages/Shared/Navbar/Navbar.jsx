@@ -52,7 +52,7 @@ const Navbar = () => {
         <>
           <li>
             <NavLink
-              to="dashboard/instructor"
+              to="dashboard/enrolled"
               activeClassName="active-link"
               className="nav-link"
             >

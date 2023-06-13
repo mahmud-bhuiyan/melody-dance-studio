@@ -6,13 +6,14 @@ import {
   FaShoppingCart,
   FaUsers,
 } from "react-icons/fa";
+import logo from "../../public/logo.png";
 
 const DashboardLayout = () => {
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content p-6 bg-green-300">
+        <div className="drawer-content p-6">
           <label
             htmlFor="my-drawer-2"
             className="btn btn-sm mb-6 drawer-button lg:hidden"
@@ -24,6 +25,21 @@ const DashboardLayout = () => {
         <div className="drawer-side bg-slate-200">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-60 text-base-content">
+            {/* website logo */}
+            <li className="mb-2 sm:mb-6 ">
+              <NavLink
+                to="/"
+                className="btn btn-ghost normal-case text-xl"
+                activeClassName="active-link"
+              >
+                <img className="rounded-full w-10 h-10" src={logo} alt="" />
+                <span className="hidden md:block">Melody Dance Studio</span>
+                <span className="md:hidden">MDS</span>
+              </NavLink>
+            </li>
+
+            <div className="divider"></div>
+
             {/* Student Dashboard */}
             <li>
               <NavLink
@@ -39,7 +55,7 @@ const DashboardLayout = () => {
             <li>
               <NavLink
                 exact
-                to="/enrolled-classes"
+                to="/dashboard/enrolled"
                 activeClassName="active-link"
                 className="flex items-center"
               >

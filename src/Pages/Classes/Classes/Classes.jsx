@@ -28,6 +28,21 @@ const Classes = () => {
         email: user.email,
       };
 
+      const isEnrolled = enrolled.some(
+        (enrolledClass) => enrolledClass.classId === classId
+      );
+
+      if (isEnrolled) {
+        Swal.fire({
+          position: "top-end",
+          icon: "warning",
+          title: "Already enrolled for the class.",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        return;
+      }
+
       fetch("http://localhost:7000/enrolled", {
         method: "POST",
         headers: {
@@ -55,6 +70,7 @@ const Classes = () => {
 
   const isLoggedIn = !!user;
   const isAdmin = user && user.isAdmin;
+  const isInstructor = user && user.isInstructor;
 
   return (
     <div>
@@ -71,64 +87,87 @@ const Classes = () => {
       >
         <h3 className="text-4xl font-bold pt-28 text-white">Classes</h3>
         <h5 className="text-lg font-bold text-white">
-          (Enrolled: {enrolled?.length})
+          (Enrolled: {enrolled?.length || 0})
         </h5>
       </div>
 
       <div>
-        {classes.map((classItem, index) => (
-          <div
-            className={`card ${
-              classItem.availableSeats === 0 ? "bg-red-500" : ""
-            } `}
-            key={classItem._id}
-          >
-            <div className="card-body p-0 bg-[#f2f2f2]">
-              <div
-                className={`flex flex-col md:flex-row ${
-                  index % 2 === 0 ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                <div className="md:w-1/2">
-                  <img
-                    src={classItem.classImage}
-                    alt={classItem.className}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="md:w-1/2 p-4 flex flex-col justify-center">
-                  <h2 className="card-title text-xl mb-2">
-                    {classItem.className}
-                  </h2>
-                  <p className="mb-2">Instructor: {classItem.instructorName}</p>
-                  <p className="mb-2">
-                    Available Seats: {classItem.availableSeats}
-                  </p>
-                  <p className="">Price: {classItem.price}</p>
-                  <div className="card-actions">
-                    <button
-                      className={`btn btn-sm btn-primary ${
-                        classItem.availableSeats === 0 ||
-                        (isAdmin && isLoggedIn) ||
-                        !isLoggedIn
-                          ? "btn-disabled"
-                          : ""
-                      }`}
-                      onClick={() => handleJoinClass(classItem)}
-                      disabled={
-                        classItem.availableSeats === 0 ||
-                        (isAdmin && isLoggedIn) ||
-                        !isLoggedIn
-                      }
-                    >
-                      {isLoggedIn ? "Enroll" : "Log in to Select"}
-                    </button>
+        {classes.map((classItem, index) => {
+          const {
+            _id,
+            className,
+            classImage,
+            instructorName,
+            price,
+            availableSeats,
+          } = classItem;
+          const remainingSeats =
+            availableSeats -
+            enrolled.filter(
+              (enrolledClass) => enrolledClass.classId === classItem.classId
+            ).length;
+          const isEnrolled = enrolled.some(
+            (enrolledClass) => enrolledClass.classId === classItem.classId
+          );
+
+          return (
+            <div
+              className={`card ${
+                availableSeats === 0 ? "bg-red-500 text-white" : "bg-[#f2f2f2]"
+              } `}
+              key={_id}
+            >
+              <div className="card-body p-0 ">
+                <div
+                  className={`flex flex-col md:flex-row ${
+                    index % 2 === 0 ? "md:flex-row-reverse" : ""
+                  }`}
+                >
+                  <div className="md:w-1/2">
+                    <img
+                      src={classImage}
+                      alt={className}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="md:w-1/2 p-4 flex flex-col justify-center">
+                    <h2 className="card-title text-xl mb-2">{className}</h2>
+                    <p className="mb-2">Instructor: {instructorName}</p>
+                    <p className="mb-2">Available Seats: {remainingSeats}</p>
+                    <p className="">Price: {price}</p>
+                    <div className="card-actions">
+                      <button
+                        className={`btn btn-sm btn-primary ${
+                          availableSeats === 0 ||
+                          (isAdmin && isLoggedIn) ||
+                          (isInstructor && isLoggedIn) ||
+                          !isLoggedIn ||
+                          isEnrolled
+                            ? "btn-disabled"
+                            : ""
+                        }`}
+                        onClick={() => handleJoinClass(classItem)}
+                        disabled={
+                          availableSeats === 0 ||
+                          (isAdmin && isLoggedIn) ||
+                          (isInstructor && isLoggedIn) ||
+                          !isLoggedIn ||
+                          isEnrolled
+                        }
+                      >
+                        {isEnrolled
+                          ? "Enrolled"
+                          : isLoggedIn
+                          ? "Enroll"
+                          : "Log in to Select"}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
