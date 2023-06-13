@@ -37,6 +37,10 @@ const MyCart = () => {
     });
   };
 
+  const handlePay = (item) => {
+    console.log(item._id);
+  };
+
   return (
     <div>
       <Helmet>
@@ -44,18 +48,20 @@ const MyCart = () => {
       </Helmet>
       <div className="sm:mt-14 md:mt-20 md:mx-10">
         <div className="shadow-lg p-4 sm:p-6 rounded-lg">
-          <h2 className="text-3xl">My Enrolled Classes: {enrolled.length}</h2>
-          <h2 className="text-3xl">Total Amount: $ {total}</h2>
+          <div className="flex justify-between">
+            <h2 className="text-2xl">My Enrolled Classes: {enrolled.length}</h2>
+            <h2 className="text-2xl">Total Amount: $ {total}</h2>
+          </div>
           <div className="mt-6">
             <div className="overflow-x-auto">
               <table className="table table-zebra border border-slate-600 text-center rounded-lg">
                 <thead>
                   <tr className="bg-slate-300 ">
-                    <th className="border text-lg">Number</th>
+                    <th className="border text-lg">#</th>
                     <th className="border text-lg">Image</th>
-                    <th className="border text-lg">Name</th>
-                    <th className="border text-lg">Job</th>
-                    <th className="border text-lg">Favorite Color</th>
+                    <th className="border text-lg">Class Name</th>
+                    <th className="border text-lg">Instructor</th>
+                    <th className="border text-lg">Price</th>
                     <th className="border text-lg">Action</th>
                   </tr>
                 </thead>
@@ -79,9 +85,15 @@ const MyCart = () => {
                       <td className="border">
                         <button
                           onClick={() => handleDelete(item)}
-                          className="text-xl text-red-600"
+                          className="text-xl btn btn-error px-5 mr-3"
                         >
                           <FaTrashAlt />
+                        </button>
+                        <button
+                          onClick={() => handlePay(item)}
+                          className="text-xl btn btn-success"
+                        >
+                          Pay
                         </button>
                       </td>
                     </tr>
