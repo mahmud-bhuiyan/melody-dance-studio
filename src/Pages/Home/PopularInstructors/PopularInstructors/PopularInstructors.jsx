@@ -1,5 +1,6 @@
 import PopularInstructorsCard from "../PopularInstructorsCard/PopularInstructorsCard";
 import useData from "../../../../Hooks/useData";
+import { Link } from "react-router-dom";
 
 const PopularInstructors = () => {
   const [data] = useData();
@@ -21,6 +22,13 @@ const PopularInstructors = () => {
               instructor={instructor}
             ></PopularInstructorsCard>
           ))}
+        </div>
+        <div className="flex justify-center mt-8">
+          <Link to="/instructors">
+            <button className="uppercase btn btn-outline btn-info border-0 border-b-4">
+              See All Instructors
+            </button>
+          </Link>
         </div>
       </div>
     </>

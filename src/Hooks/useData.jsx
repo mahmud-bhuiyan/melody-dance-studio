@@ -5,7 +5,7 @@ const useData = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("classes.json")
+    fetch("http://localhost:7000/classes")
       .then((res) => res.json())
       .then((data) => {
         setData(data);

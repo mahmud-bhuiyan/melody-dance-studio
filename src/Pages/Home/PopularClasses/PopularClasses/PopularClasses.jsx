@@ -1,5 +1,6 @@
 import PopularClassesCard from "../PopularClassesCard/PopularClassesCard";
 import useData from "../../../../Hooks/useData";
+import { Link } from "react-router-dom";
 
 const PopularClasses = () => {
   const [data] = useData();
@@ -20,6 +21,13 @@ const PopularClasses = () => {
             danceClass={danceClass}
           ></PopularClassesCard>
         ))}
+      </div>
+      <div className="flex justify-center mt-8">
+        <Link to="/classes">
+          <button className="uppercase btn btn-outline btn-info border-0 border-b-4">
+            See All Classes
+          </button>
+        </Link>
       </div>
     </div>
   );
