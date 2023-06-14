@@ -4,7 +4,11 @@
 
 ## Server-side Git link: https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-mahmud-bhuiyan.git
 
-### Live website link:
+### Live website link: https://melody-dance-studio.web.app/
+
+### Admin email: bh.mahmud@gmail.com
+
+### Admin password: Asdfgh1@
 
 ## Features
 

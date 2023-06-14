@@ -43,7 +43,7 @@ const Classes = () => {
         return;
       }
 
-      fetch("http://localhost:7000/enrolled", {
+      fetch("https://melody-dance-studio-server.vercel.app/enrolled", {
         method: "POST",
         headers: {
           "content-type": "application/json",

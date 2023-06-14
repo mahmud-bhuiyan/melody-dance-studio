@@ -24,7 +24,12 @@ const AllUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        toast(`${user.name}, has been deleted!`);
+        axiosSecure.delete(`/users/${user._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            toast(`${user.name}, has been deleted!`);
+          }
+        });
       }
     });
   };
@@ -40,9 +45,12 @@ const AllUsers = () => {
       confirmButtonText: "Yes, make ADMIN!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:7000/users/admin/${user._id}`, {
-          method: "PATCH",
-        })
+        fetch(
+          `https://melody-dance-studio-server.vercel.app/users/admin/${user._id}`,
+          {
+            method: "PATCH",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
@@ -68,9 +76,12 @@ const AllUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:7000/users/instructor/${user._id}`, {
-          method: "PATCH",
-        })
+        fetch(
+          `https://melody-dance-studio-server.vercel.app/users/instructor/${user._id}`,
+          {
+            method: "PATCH",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

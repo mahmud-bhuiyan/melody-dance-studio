@@ -21,7 +21,7 @@ const SocialLogin = () => {
           image: loggedInUser.photoURL,
           role: "user",
         };
-        fetch(`http://localhost:7000/users`, {
+        fetch(`https://melody-dance-studio-server.vercel.app/users`, {
           method: "POST",
           headers: {
             "content-type": "application/json",

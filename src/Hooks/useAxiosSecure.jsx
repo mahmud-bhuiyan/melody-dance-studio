@@ -8,7 +8,7 @@ const useAxiosSecure = () => {
   const navigate = useNavigate();
 
   const axiosSecure = axios.create({
-    baseURL: "http://localhost:7000",
+    baseURL: "https://melody-dance-studio-server.vercel.app/",
   });
 
   useEffect(() => {

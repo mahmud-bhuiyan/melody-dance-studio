@@ -16,7 +16,7 @@ const useCart = () => {
     },
     // queryFn: async () => {
     //   const res = await fetch(
-    //     `http://localhost:7000/enrolled?email=${user?.email}`,
+    //     `https://melody-dance-studio-server.vercel.app/enrolled?email=${user?.email}`,
     //     { headers: { authorization: `bearer ${token}` } }
     //   );
     //   return res.json();
