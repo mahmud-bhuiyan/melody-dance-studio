@@ -8,10 +8,13 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import logo from "../../public/logo.png";
+import useAdmin from "../Hooks/useAdmin";
 
 const DashboardLayout = () => {
-  const isAdmin = true;
-  // const isAdmin = false;
+  // const isAdmin = true;
+
+  const [isAdmin] = useAdmin();
+  console.log(isAdmin);
 
   return (
     <div className="max-w-screen-xl mx-auto">
