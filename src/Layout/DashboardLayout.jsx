@@ -10,20 +10,8 @@ import {
 import logo from "../../public/logo.png";
 import useAdmin from "../Hooks/useAdmin";
 import useInstructor from "../Hooks/useInstructor";
-import useAuth from "../Hooks/useAuth";
 
 const DashboardLayout = () => {
-  const { logout } = useAuth();
-
-  const handleLogOut = () => {
-    logout()
-      .then(() => {
-        console.log("Sign-out successful");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
 
@@ -103,7 +91,7 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink
                     exact="true"
-                    to="/add-class"
+                    to="/dashboard/addclass"
                     className="flex items-center"
                   >
                     <FaBook className="mr-2" />
@@ -164,14 +152,6 @@ const DashboardLayout = () => {
                 <FaBook className="mr-2" />
                 Instructors
               </NavLink>
-            </li>
-            <li>
-              <button
-                className="btn btn-sm btn-warning font-bold"
-                onClick={handleLogOut}
-              >
-                Logout
-              </button>
             </li>
           </ul>
         </div>
