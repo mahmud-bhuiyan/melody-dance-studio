@@ -27,4 +27,44 @@ The application consists of the following components:
 
 - `ErrorPage`: Displays an error page.
 
-The application uses `react-router-dom` for routing and navigation between different pages.
+## Packages/ Technology
+
+The application uses in the front end:
+
+- `react-router-dom`: for routing and navigation between different pages.
+
+- `axios`: for data fetching.
+
+- `react-rating`: for security.
+
+- `tanstack/react-query`: data fetching.
+
+- `animejs`: for text animation.
+
+- `firebase`: for authentication and hosting security.
+
+- `react-helmet-async`
+
+- `react-hook-form`: for better secure form.
+
+- `react-icons`
+
+- `react-responsive-carousel`
+
+- `sweetalert2`
+
+- `swiper`
+
+- `react-toastify`
+
+The application uses in the back end:
+
+- `cors`
+
+- `dotenv`
+
+- `express`
+
+- `jsonwebtoken`
+
+- `mongodb`

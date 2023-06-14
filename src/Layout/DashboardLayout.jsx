@@ -9,12 +9,23 @@ import {
 } from "react-icons/fa";
 import logo from "../../public/logo.png";
 import useAdmin from "../Hooks/useAdmin";
+import useInstructor from "../Hooks/useInstructor";
+import useAuth from "../Hooks/useAuth";
 
 const DashboardLayout = () => {
-  // const isAdmin = true;
+  const { logout } = useAuth();
 
+  const handleLogOut = () => {
+    logout()
+      .then(() => {
+        console.log("Sign-out successful");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   const [isAdmin] = useAdmin();
-  console.log(isAdmin);
+  const [isInstructor] = useInstructor();
 
   return (
     <div className="max-w-screen-xl mx-auto">
@@ -43,7 +54,7 @@ const DashboardLayout = () => {
 
             <div className="divider"></div>
 
-            {isAdmin ? (
+            {isAdmin && (
               <>
                 <li>
                   <NavLink
@@ -65,6 +76,10 @@ const DashboardLayout = () => {
                     All Users
                   </NavLink>
                 </li>
+              </>
+            )}
+            {isInstructor && (
+              <>
                 <li>
                   <NavLink
                     exact="true"
@@ -85,7 +100,6 @@ const DashboardLayout = () => {
                     Manage Users
                   </NavLink>
                 </li>
-                {/* Instructor Dashboard */}
                 <li>
                   <NavLink
                     exact="true"
@@ -107,7 +121,8 @@ const DashboardLayout = () => {
                   </NavLink>
                 </li>
               </>
-            ) : (
+            )}
+            {!isAdmin && !isInstructor && (
               <>
                 <li>
                   <NavLink
@@ -149,6 +164,14 @@ const DashboardLayout = () => {
                 <FaBook className="mr-2" />
                 Instructors
               </NavLink>
+            </li>
+            <li>
+              <button
+                className="btn btn-sm btn-warning font-bold"
+                onClick={handleLogOut}
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </div>
