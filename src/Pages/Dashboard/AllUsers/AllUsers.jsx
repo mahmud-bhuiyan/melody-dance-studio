@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
-import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import PageHeaders from "../../../Components/pageHeaders/pageHeaders";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -13,18 +14,73 @@ const AllUsers = () => {
 
   const handleDelete = (user) => {
     console.log(user);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        toast(`${user.name}, has been deleted!`);
+      }
+    });
   };
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:7000/users/admin/${user._id}`, { method: "PATCH" })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount) {
-          refetch();
-          toast(`${user.name}, is an ADMIN Now!`);
-        }
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, make ADMIN!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:7000/users/admin/${user._id}`, {
+          method: "PATCH",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.modifiedCount) {
+              refetch();
+              toast(`${user.name}, is an ADMIN Now!`);
+            } else {
+              toast("User role is not updated!");
+            }
+          });
+      }
+    });
+  };
+
+  const handleMakeInstructor = (user) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:7000/users/instructor/${user._id}`, {
+          method: "PATCH",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.modifiedCount) {
+              refetch();
+              toast(`${user.name}, is an Instructor Now!`);
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -35,9 +91,12 @@ const AllUsers = () => {
       <ToastContainer />
       <div>
         <div className="sm:mt-14 md:mt-20 md:mx-10">
+          <PageHeaders text={"Manage Users"}></PageHeaders>
           <div className="shadow-lg p-4 sm:p-6 rounded-lg">
             <div>
-              <h2 className="text-2xl">Total Users: {users.length}</h2>
+              <h2 className="text-xl text-center">
+                Total Users: {users.length}
+              </h2>
             </div>
             <div className="mt-6">
               <div className="overflow-x-auto">
@@ -66,20 +125,30 @@ const AllUsers = () => {
                         <td className="border">{user.name}</td>
                         <td className="border">{user.email}</td>
                         <td className="border">
-                          {user.role === "admin" ? (
-                            "ADMIN"
-                          ) : (
-                            <button onClick={() => handleMakeAdmin(user)}>
-                              <FaUserShield className="text-3xl mx-auto"></FaUserShield>
-                            </button>
-                          )}
+                          {user.role === "admin"
+                            ? "ADMIN"
+                            : "Student" && user.role === "instructor"
+                            ? "Instructor"
+                            : "Student"}
                         </td>
                         <td className="border">
                           <button
-                            onClick={() => handleDelete(user)}
-                            className="text-xl btn btn-error px-4"
+                            onClick={() => handleMakeAdmin(user)}
+                            className="btn btn-success text-white btn-xs"
                           >
-                            <FaTrashAlt />
+                            Admin
+                          </button>
+                          <button
+                            onClick={() => handleMakeInstructor(user)}
+                            className="btn btn-info text-white btn-xs m-2 px-5"
+                          >
+                            Instructor
+                          </button>
+                          <button
+                            onClick={() => handleDelete(user)}
+                            className=" btn btn-error btn-xs px-2"
+                          >
+                            Delete
                           </button>
                         </td>
                       </tr>

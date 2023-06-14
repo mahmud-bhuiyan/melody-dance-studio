@@ -2,7 +2,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import useInstructor from "../Hooks/useInstructor";
 
-const AdminRoute = ({ children }) => {
+const InstructorRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const [isInstructor, isInstructorLoading] = useInstructor();
 
@@ -19,4 +19,4 @@ const AdminRoute = ({ children }) => {
   return <Navigate state={{ from: location }} to="/" replace></Navigate>;
 };
 
-export default AdminRoute;
+export default InstructorRoute;

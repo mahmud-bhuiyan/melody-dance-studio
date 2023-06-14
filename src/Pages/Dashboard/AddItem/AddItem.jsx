@@ -197,7 +197,7 @@ const AddItem = () => {
                 {...register("duration", { required: true })}
                 className="select border border-slate-400"
               >
-                <option disabled selected>
+                <option disabled value="">
                   Select duration
                 </option>
                 <option value="1 month">1 month</option>

@@ -14,6 +14,8 @@ import PrivateRoute from "./PrivateRoute";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddItem from "../Pages/Dashboard/AddItem/AddItem";
 import InstructorRoute from "./InstructorRoute";
+import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -60,8 +62,16 @@ const router = createBrowserRouter([
         element: <MyCart></MyCart>,
       },
       {
-        path: "allusers",
+        path: "manage/users",
         element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "manage/classes",
+        element: (
+          <AdminRoute>
+            <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
       },
       {
         path: "addclass",

@@ -3,7 +3,6 @@ import {
   FaBars,
   FaBook,
   FaHome,
-  FaShoppingBag,
   FaShoppingCart,
   FaUsers,
 } from "react-icons/fa";
@@ -57,11 +56,21 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink
                     exact="true"
-                    to="/dashboard/allusers"
+                    to="/dashboard/manage/users"
                     className="flex items-center"
                   >
                     <FaHome className="mr-2" />
-                    All Users
+                    Manage Users
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    exact="true"
+                    to="/dashboard/manage/classes"
+                    className="flex items-center"
+                  >
+                    <FaHome className="mr-2" />
+                    Manage Classes
                   </NavLink>
                 </li>
               </>
@@ -71,21 +80,11 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink
                     exact="true"
-                    to="/manage-classes"
-                    className="flex items-center"
-                  >
-                    <FaShoppingBag className="mr-2" />
-                    Manage Classes
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    exact="true"
-                    to="/manage-users"
+                    to="/dashboard/myclasses"
                     className="flex items-center"
                   >
                     <FaUsers className="mr-2" />
-                    Manage Users
+                    My Classes
                   </NavLink>
                 </li>
                 <li>
@@ -96,16 +95,6 @@ const DashboardLayout = () => {
                   >
                     <FaBook className="mr-2" />
                     Add a Class
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    exact="true"
-                    to="/my-classes"
-                    className="flex items-center"
-                  >
-                    <FaUsers className="mr-2" />
-                    My Classes
                   </NavLink>
                 </li>
               </>
