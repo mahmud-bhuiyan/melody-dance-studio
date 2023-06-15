@@ -3,6 +3,7 @@ import {
   FaBars,
   FaBook,
   FaHome,
+  FaMoneyCheckAlt,
   FaShoppingCart,
   FaUsers,
 } from "react-icons/fa";
@@ -46,7 +47,7 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink
                     exact="true"
-                    to="/dashboard/home"
+                    to="/dashboard/adminHome"
                     className="flex items-center"
                   >
                     <FaHome className="mr-2" />
@@ -80,6 +81,16 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink
                     exact="true"
+                    to="/dashboard/instructorHome"
+                    className="flex items-center"
+                  >
+                    <FaHome className="mr-2" />
+                    Instructor Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    exact="true"
                     to="/dashboard/myclasses"
                     className="flex items-center"
                   >
@@ -104,6 +115,16 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink
                     exact="true"
+                    to="/dashboard/studentHome"
+                    className="flex items-center"
+                  >
+                    <FaHome className="mr-2" />
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    exact="true"
                     to="/selected-classes"
                     className="flex items-center"
                   >
@@ -119,6 +140,16 @@ const DashboardLayout = () => {
                   >
                     <FaShoppingCart className="mr-2" />
                     My Enrolled Classes
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    exact="true"
+                    to="/dashboard/payment"
+                    className="flex items-center"
+                  >
+                    <FaMoneyCheckAlt className="mr-2" />
+                    Payment
                   </NavLink>
                 </li>
               </>

@@ -3,9 +3,13 @@ import logo from "../../../../public/logo.png";
 import { FaUser } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import useAdmin from "../../../Hooks/useAdmin";
+import useInstructor from "../../../Hooks/useInstructor";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   const handleLogOut = () => {
     logout()
@@ -52,7 +56,13 @@ const Navbar = () => {
         <>
           <li>
             <NavLink
-              to="dashboard/enrolled"
+              to={
+                isAdmin
+                  ? "/dashboard/adminHome"
+                  : "dashboard/studentHome" && isInstructor
+                  ? "/dashboard/instructorHome"
+                  : "dashboard/studentHome"
+              }
               activeclassname="active-link"
               className="nav-link"
             >

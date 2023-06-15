@@ -16,6 +16,10 @@ import AddItem from "../Pages/Dashboard/AddItem/AddItem";
 import InstructorRoute from "./InstructorRoute";
 import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 import AdminRoute from "./AdminRoute";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import StudentHome from "../Pages/Dashboard/StudentHome/StudentHome";
+import InstructorHome from "../Pages/Dashboard/InstructorHome/InstructorHome";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +56,28 @@ const router = createBrowserRouter([
         <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
+      {
+        path: "studentHome",
+        element: <StudentHome></StudentHome>,
+      },
+      {
+        path: "instructorHome",
+        element: (
+          <InstructorRoute>
+            <InstructorHome></InstructorHome>
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "adminHome",
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
+      },
       {
         path: "instructor",
         element: <Instructor></Instructor>,
@@ -64,6 +89,10 @@ const router = createBrowserRouter([
       {
         path: "manage/users",
         element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
       },
       {
         path: "manage/classes",

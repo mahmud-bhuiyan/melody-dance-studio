@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { ToastContainer, toast } from "react-toastify";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import PageHeaders from "../../../Components/pageHeaders/pageHeaders";
+import PageHeaders from "../../../Components/pageHeaders/PageHeaders";
 import Swal from "sweetalert2";
 
 const AllUsers = () => {

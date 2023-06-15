@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import useCart from "../../../Hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [enrolled, refetch] = useCart();
@@ -39,10 +40,6 @@ const MyCart = () => {
     });
   };
 
-  const handlePay = (item) => {
-    console.log(item._id);
-  };
-
   return (
     <div>
       <Helmet>
@@ -53,6 +50,9 @@ const MyCart = () => {
           <div className="flex justify-between">
             <h2 className="text-2xl">My Enrolled Classes: {enrolled.length}</h2>
             <h2 className="text-2xl">Total Amount: $ {total}</h2>
+            <Link to="/dashboard/payment">
+              <button className="text-xl btn btn-sm btn-success">Pay</button>
+            </Link>
           </div>
           <div className="mt-6">
             <div className="overflow-x-auto">
@@ -90,12 +90,6 @@ const MyCart = () => {
                           className="text-xl btn btn-error px-5 mr-3"
                         >
                           <FaTrashAlt />
-                        </button>
-                        <button
-                          onClick={() => handlePay(item)}
-                          className="text-xl btn btn-success"
-                        >
-                          Pay
                         </button>
                       </td>
                     </tr>
