@@ -1,23 +1,24 @@
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-
-const enrolledClasses = [
-  {
-    _id: "64886d3eac15e5dd87db4b68",
-    classId: "CL0007",
-    className: "Manipuri",
-    classImage: "https://i.ibb.co/RCx4qQz/dance-b-4.png",
-    instructorName: "Sanjay Singh",
-    instructorEmail: "sanjay@example.com",
-    instructorImage: "https://i.ibb.co/1b2KzqH/instructor-6.png",
-    availableSeats: 12,
-    price: 20,
-    status: "approved",
-    enrolled: 9,
-    feedback: [],
-  },
-];
+import useAuth from "../../../Hooks/useAuth";
 
 const MyClasses = () => {
+  const { user } = useAuth();
+  const [enrolledClasses, setEnrolledClasses] = useState([]);
+
+  useEffect(() => {
+    if (user) {
+      fetch("https://melody-dance-studio-server.vercel.app/classes")
+        .then((res) => res.json())
+        .then((data) => {
+          const instructorClasses = data.filter(
+            (item) => item.instructorEmail === user.email
+          );
+          setEnrolledClasses(instructorClasses);
+        });
+    }
+  }, [user]);
+
   return (
     <div>
       <Helmet>
@@ -36,7 +37,7 @@ const MyClasses = () => {
                     <th className="border text-lg">#</th>
                     <th className="border text-lg">Image</th>
                     <th className="border text-lg">Class Name</th>
-                    <th className="border text-lg">Instructor</th>
+
                     <th className="border text-lg">Price</th>
                     <th className="border text-lg">Status</th>
                     <th className="border text-lg">Feedback</th>
@@ -58,7 +59,7 @@ const MyClasses = () => {
                         </div>
                       </td>
                       <td className="border">{item.className}</td>
-                      <td className="border">{item.instructorName}</td>
+
                       <td className="border">{item.price}</td>
                       <td className="border">{item.status}</td>
                       <td className="border">
