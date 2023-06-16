@@ -1,20 +1,26 @@
-import { Helmet } from "react-helmet-async";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import useAuth from "../../../Hooks/useAuth";
 
 const MyCart = () => {
   const [paid, setPaid] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
-    fetch("https://melody-dance-studio-server.vercel.app/payments")
-      .then((res) => res.json())
-      .then((data) => {
-        setPaid((prevPaid) => [...prevPaid, ...data]);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+    if (user) {
+      fetch("https://melody-dance-studio-server.vercel.app/payments")
+        .then((res) => res.json())
+        .then((data) => {
+          const userPayments = data.filter(
+            (payment) => payment.email === user.email
+          );
+          setPaid(userPayments);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+  }, [user]);
 
   return (
     <div>
@@ -44,11 +50,13 @@ const MyCart = () => {
                     <tr key={payment._id}>
                       <td className="border">{index + 1}</td>
                       <td className="border">
-                        {payment.classNames.length > 1
-                          ? payment.classNames.map((className) => (
-                              <div key={className}>{className}</div>
-                            ))
-                          : payment.classNames[0]}
+                        {payment.classNames.length > 1 ? (
+                          payment.classNames.map((className) => (
+                            <div key={className}>{className}</div>
+                          ))
+                        ) : (
+                          <div>{payment.classNames[0]}</div>
+                        )}
                       </td>
                       <td className="border">{payment.date}</td>
                     </tr>

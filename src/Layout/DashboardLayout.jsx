@@ -152,6 +152,16 @@ const DashboardLayout = () => {
                     Payment
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    exact="true"
+                    to="/dashboard/history"
+                    className="flex items-center"
+                  >
+                    <FaMoneyCheckAlt className="mr-2" />
+                    Payment History
+                  </NavLink>
+                </li>
               </>
             )}
 
