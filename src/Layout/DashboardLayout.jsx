@@ -125,7 +125,7 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink
                     exact="true"
-                    to="/selected-classes"
+                    to="/dashboard/enrolled-classes"
                     className="flex items-center"
                   >
                     <FaShoppingCart className="mr-2" />

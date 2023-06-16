@@ -35,6 +35,10 @@ const AllUsers = () => {
   };
 
   const handleMakeAdmin = (user) => {
+    if (user.role === "admin") {
+      return;
+    }
+
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -42,7 +46,7 @@ const AllUsers = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, make ADMIN!",
+      confirmButtonText: "Yes, make ADMIN",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
@@ -66,6 +70,10 @@ const AllUsers = () => {
   };
 
   const handleMakeInstructor = (user) => {
+    if (user.role === "instructor") {
+      return;
+    }
+
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -73,7 +81,7 @@ const AllUsers = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, make INSTRUCTOR",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
@@ -138,26 +146,35 @@ const AllUsers = () => {
                         <td className="border">
                           {user.role === "admin"
                             ? "ADMIN"
-                            : "Student" && user.role === "instructor"
+                            : user.role === "instructor"
                             ? "Instructor"
                             : "Student"}
                         </td>
                         <td className="border">
                           <button
                             onClick={() => handleMakeAdmin(user)}
-                            className="btn btn-success text-white btn-xs"
+                            className={`btn btn-success text-white btn-xs ${
+                              user.role === "admin" ? "disabled" : ""
+                            }`}
+                            disabled={user.role === "admin"}
                           >
                             Admin
                           </button>
                           <button
                             onClick={() => handleMakeInstructor(user)}
-                            className="btn btn-info text-white btn-xs m-2 px-5"
+                            className={`btn btn-info text-white btn-xs m-2 px-5 ${
+                              user.role === "instructor" ? "disabled" : ""
+                            }`}
+                            disabled={
+                              user.role === "admin" ||
+                              user.role === "instructor"
+                            }
                           >
                             Instructor
                           </button>
                           <button
                             onClick={() => handleDelete(user)}
-                            className=" btn btn-error btn-xs px-2"
+                            className="btn btn-error btn-xs px-2"
                           >
                             Delete
                           </button>
