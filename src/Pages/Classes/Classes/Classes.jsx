@@ -7,9 +7,13 @@ import useCart from "../../../Hooks/useCart";
 
 const Classes = () => {
   const [data] = useData();
-  const [classes] = [data];
+
   const { user } = useContext(AuthContext);
   const [enrolled, refetch] = useCart();
+
+  const approvedClasses = data.filter(
+    (classItem) => classItem.status === "approved"
+  );
 
   const handleJoinClass = (classItem) => {
     console.log(classItem);
@@ -92,7 +96,7 @@ const Classes = () => {
       </div>
 
       <div>
-        {classes.map((classItem, index) => {
+        {approvedClasses.map((classItem, index) => {
           const {
             _id,
             className,
@@ -149,9 +153,8 @@ const Classes = () => {
                         onClick={() => handleJoinClass(classItem)}
                         disabled={
                           availableSeats === 0 ||
-                          (isAdmin && isLoggedIn) ||
-                          (isInstructor && isLoggedIn) ||
-                          !isLoggedIn ||
+                          isAdmin ||
+                          isInstructor ||
                           isEnrolled
                         }
                       >

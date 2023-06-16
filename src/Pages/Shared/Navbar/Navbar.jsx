@@ -28,11 +28,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li>
-        <NavLink exact="true" to="/contact" activeclassname="active-link">
-          Contact Us
-        </NavLink>
-      </li>
+
       <li>
         <NavLink
           to="/instructors"

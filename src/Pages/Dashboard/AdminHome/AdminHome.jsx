@@ -8,7 +8,7 @@ const AdminHome = () => {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:7000/admin-stats")
+    fetch("https://melody-dance-studio-server.vercel.app/admin-stats")
       .then((response) => response.json())
       .then((data) => setStats(data))
       .catch((error) => console.log(error));

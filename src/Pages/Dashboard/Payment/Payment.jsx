@@ -8,7 +8,6 @@ import useCart from "../../../Hooks/useCart";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 const Payment = () => {
-  // HayHayKiPassword!@
   const [cart] = useCart();
   const price = parseFloat(
     cart.reduce((sum, item) => item.price + sum, 0).toFixed(2)

@@ -1,7 +1,8 @@
 import { FaStopwatch, FaUserTie } from "react-icons/fa";
 
 const PopularClassesCard = ({ danceClass }) => {
-  const { className, classImage, enrolled, instructorName } = danceClass;
+  const { className, classImage, enrolled, instructorName, duration } =
+    danceClass;
 
   return (
     <div className="p-4 border rounded-lg">
@@ -26,7 +27,7 @@ const PopularClassesCard = ({ danceClass }) => {
           <FaUserTie /> : {instructorName}
         </p>
         <p className="text-gray-600 flex items-center gap-2">
-          <FaStopwatch /> :
+          <FaStopwatch /> : {duration ? duration : "1 month"}
         </p>
       </div>
     </div>
