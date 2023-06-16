@@ -5,7 +5,7 @@ const MyCart = () => {
   const [paid, setPaid] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:7000/payments")
+    fetch("https://melody-dance-studio-server.vercel.app/payments")
       .then((res) => res.json())
       .then((data) => {
         setPaid((prevPaid) => [...prevPaid, ...data]);
