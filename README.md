@@ -19,8 +19,6 @@ The application consists of the following components:
 
 - `Dashboard`: Displays all admin/instructor/users data.
 
-- `All Toys`: Displays all sellers toys. It has a search by name option. While click on view details only an user can see the details in View Details page.
-
 - `Instructors page`: Here anyone can see the Instructors and their details.
 
 - `Classes page`: Here anyone can see the class details.
