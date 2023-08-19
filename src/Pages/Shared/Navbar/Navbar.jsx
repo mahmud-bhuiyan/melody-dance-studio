@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../../public/logo.png";
 import { FaUser } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useAdmin from "../../../Hooks/useAdmin";
 import useInstructor from "../../../Hooks/useInstructor";
@@ -10,7 +10,11 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
   const handleLogOut = () => {
     logout()
       .then(() => {
@@ -105,10 +109,42 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar fixed z-10 max-w-screen-xl bg-opacity-30 bg-black text-white">
-      <div>
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+    <div className="navbar p-0 md:p-2 fixed z-10 bg-white">
+      {/* logo */}
+      <NavLink
+        to="/"
+        className="btn btn-ghost normal-case text-xl"
+        activeclassname="active-link"
+      >
+        <img className="rounded-full w-10 h-10" src={logo} alt="" />
+        <span className="hidden md:block">Melody Dance Studio</span>
+        <span className="md:hidden">MDS</span>
+      </NavLink>
+
+      {/* regular links */}
+      <div className="ml-auto hidden lg:flex items-center space-x-2">
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+      </div>
+
+      {/* hamburger */}
+      <div className="dropdown ml-auto lg:hidden">
+        <button tabIndex={0} className="btn btn-ghost" onClick={toggleDropdown}>
+          {isDropdownOpen ? (
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
             <svg
               className="w-6 h-6"
               fill="none"
@@ -123,26 +159,16 @@ const Navbar = () => {
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-black rounded-box w-44"
-          >
-            {navLinks}
-          </ul>
-        </div>
-        <NavLink
-          to="/"
-          className="btn btn-ghost normal-case text-xl"
-          activeclassname="active-link"
+          )}
+        </button>
+        <ul
+          tabIndex={0}
+          className={`menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-black rounded-box w-44 absolute top-full right-0 ${
+            isDropdownOpen ? "block" : "hidden"
+          }`}
         >
-          <img className="rounded-full w-10 h-10" src={logo} alt="" />
-          <span className="hidden md:block">Melody Dance Studio</span>
-          <span className="md:hidden">MDS</span>
-        </NavLink>
-      </div>
-      <div className="ml-auto hidden lg:flex items-center space-x-2">
-        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+          {navLinks}
+        </ul>
       </div>
     </div>
   );

@@ -70,10 +70,12 @@ const Banner = () => {
           <div key={index}>
             <img src={cls.classImage} alt="" />
             <div
-              className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white "
+              className="absolute inset-0 flex flex-col items-center justify-center text-white"
               ref={(el) => (textRef.current[index] = el)}
             >
-              <div className="text-2xl font-bold p-4">{cls.className}</div>
+              <div className="text-2xl lg:text-4xl font-bold p-4">
+                {cls.className}
+              </div>
               <div
                 className="text-lg p-4 hidden sm:flex"
                 ref={(el) => (subtextRef.current[index] = el)}

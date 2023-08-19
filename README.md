@@ -1,9 +1,5 @@
 ## Website Name: Melody Dance Studio
 
-## Client-side Git link: https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-mahmud-bhuiyan.git
-
-## Server-side Git link: https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-mahmud-bhuiyan.git
-
 ### Live website link: https://melody-dance-studio.web.app/
 
 ### Admin email: bh.mahmud@gmail.com
@@ -18,6 +14,8 @@ The application consists of the following components:
   TESTIMONIALS,POPULAR INSTRUCTORS, POPULAR CLASSES.
 
 - `Dashboard`: Displays all admin/instructor/users data.
+
+- `All Toys`: Displays all sellers toys. It has a search by name option. While click on view details only an user can see the details in View Details page.
 
 - `Instructors page`: Here anyone can see the Instructors and their details.
 
