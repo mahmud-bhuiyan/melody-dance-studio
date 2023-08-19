@@ -3,8 +3,7 @@ import useData from "../../../../Hooks/useData";
 import { Link } from "react-router-dom";
 
 const PopularClasses = () => {
-  const [data] = useData();
-  const [classes] = [data];
+  const [classes] = useData();
 
   return (
     <div className="py-20">

@@ -65,7 +65,7 @@ const Banner = () => {
         showThumbs={false}
         onChange={handleSlideChange}
       >
-        {classes.slice(0, 6).map((cls, index) => (
+        {classes.slice(0, 5).map((cls, index) => (
           <div key={index} className="h-screen lg:h-auto">
             <img
               className="h-full w-full object-cover lg:h-screen"
