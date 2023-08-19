@@ -5,6 +5,7 @@ import {
   FaInstagram,
   FaMapMarkerAlt,
   FaPhoneAlt,
+  FaRegClock,
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
@@ -12,18 +13,63 @@ import {
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <div>
-      <footer className="footer p-10 bg-neutral text-neutral-content">
-        <div>
-          <img className="rounded-full w-10 h-10" src={logo} alt="" />
+    <>
+      <footer className="px-4 py-10 xl:px-10 bg-[#F19797] text-white">
+        {/* logo */}
+        <div className="flex flex-col items-center justify-center text-center mb-10">
+          <img className="rounded-full w-16 h-16" src={logo} alt="" />
           <p>
-            Melody Dance Studio
+            <span className="font-semibold">Melody Dance Studio</span>
             <br />
-            Providing joyful moments through dance!
+            <i>Providing joyful moments through dance!</i>
           </p>
         </div>
-        <div>
-          <span className="footer-title">Services</span>
+
+        {/* info cards */}
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
+          <div className="w-full h-52 bg-[#F19797] text-white shadow-xl p-8 flex flex-col items-center">
+            <FaRegClock className="text-5xl mb-4" />
+            <p className="text-center">SUNDAY TO THURSDAY</p>
+            <p className="text-center">10:00 AM - 09:00 PM</p>
+          </div>
+
+          <div className="w-full h-52 bg-[#F19797] text-white shadow-xl p-8 flex flex-col items-center">
+            <FaMapMarkerAlt className="text-5xl mb-4" />
+            <p className="text-center">
+              123, ABC Tower, <br /> Dhanmondi, Dhaka-1214, <br /> Bangladesh.
+            </p>
+          </div>
+
+          <div className="w-full h-52 bg-[#F19797] text-white shadow-xl p-8 flex flex-col items-center">
+            <FaEnvelope className="text-5xl mb-4" />
+            <p className="text-center">E-MAIL</p>
+            <p className="text-center">info@example.com</p>
+          </div>
+
+          <div className="w-full h-52 bg-[#F19797] text-white shadow-xl p-8 flex flex-col items-center">
+            <FaPhoneAlt className="text-5xl mb-4" />
+            <p className="text-center">CALL US</p>
+            <p>+8801234567890</p>
+          </div>
+        </div>
+
+        {/* social icons */}
+        <div className="flex justify-center my-10 gap-4">
+          <a className="link link-hover">
+            <FaFacebookSquare className="text-3xl rounded-xl" />
+          </a>
+          <a className="link link-hover">
+            <FaInstagram className="text-3xl rounded-xl" />
+          </a>
+          <a className="link link-hover">
+            <FaTwitter className="text-3xl rounded-xl" />
+          </a>
+          <a className="link link-hover">
+            <FaYoutube className="text-3xl rounded-xl" />
+          </a>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4">
           <a className="link link-hover" href="#">
             Dance Classes
           </a>
@@ -36,9 +82,6 @@ const Footer = () => {
           <a className="link link-hover" href="#">
             Workshops
           </a>
-        </div>
-        <div>
-          <span className="footer-title">Links</span>
           <a className="link link-hover" href="#">
             About us
           </a>
@@ -52,51 +95,25 @@ const Footer = () => {
             Testimonials
           </a>
         </div>
-        <div>
-          <span className="footer-title">Contact Us</span>
-          <div className="flex items-center gap-2">
-            <FaMapMarkerAlt />
-            <p>
-              ABC Tower, Dhaka, <br className="hidden md:flex" /> Bangladesh.
-            </p>
+
+        {/*  copyright part */}
+        <hr className="max-w-screen-2xl mx-auto my-10" />
+        <div className="max-w-screen-2xl mx-auto footer flex flex-col md:flex-row justify-center md:justify-between items-center">
+          <div className="text-center mb-4 md:mb-0">
+            <p>© {currentYear} Melody Dance Studio - All rights reserved</p>
           </div>
-          <div className="flex items-center gap-2">
-            <FaPhoneAlt />
-            <p>+8801234567890</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <FaEnvelope />
-            <p>info@example.com</p>
-          </div>
-        </div>
-        <div>
-          <span className="footer-title">Social Links</span>
-          <div className="flex gap-4">
-            <a className="link link-hover">
-              <FaFacebookSquare />
-            </a>
-            <a className="link link-hover">
-              <FaInstagram />
-            </a>
-            <a className="link link-hover">
-              <FaTwitter />
-            </a>
-            <a className="link link-hover">
-              <FaYoutube />
+          <div className="md:place-self-center md:justify-self-end">
+            <a
+              href="https://mahmud-bhuiyan.web.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Designed & Developed By: Mahmud
             </a>
           </div>
         </div>
       </footer>
-      <hr />
-      <footer className="footer items-center p-4 bg-neutral text-neutral-content">
-        <div className="items-center grid-flow-col">
-          <p>© {currentYear} Melody Dance Studio - All rights reserved</p>
-        </div>
-        <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-          <p>Designed & Developed By: Mahmud</p>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 };
 
