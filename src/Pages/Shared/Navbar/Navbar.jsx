@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../../public/logo.png";
 import { FaUser } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useAdmin from "../../../Hooks/useAdmin";
 import useInstructor from "../../../Hooks/useInstructor";
@@ -11,6 +11,22 @@ const Navbar = () => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [userHasScrolled, setUserHasScrolled] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 70) {
+      setUserHasScrolled(true);
+    } else {
+      setUserHasScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -109,68 +125,80 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar p-0 md:p-2 fixed z-10 bg-white">
-      {/* logo */}
-      <NavLink
-        to="/"
-        className="btn btn-ghost normal-case text-xl"
-        activeclassname="active-link"
+    <>
+      <div
+        className={`navbar p-0 md:p-2 fixed z-10 ${
+          userHasScrolled ? "bg-white text-black" : "bg-transparent text-white"
+        }`}
       >
-        <img className="rounded-full w-10 h-10" src={logo} alt="" />
-        <span className="hidden md:block">Melody Dance Studio</span>
-        <span className="md:hidden">MDS</span>
-      </NavLink>
-
-      {/* regular links */}
-      <div className="ml-auto hidden lg:flex items-center space-x-2">
-        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
-      </div>
-
-      {/* hamburger */}
-      <div className="dropdown ml-auto lg:hidden">
-        <button tabIndex={0} className="btn btn-ghost" onClick={toggleDropdown}>
-          {isDropdownOpen ? (
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
-        </button>
-        <ul
-          tabIndex={0}
-          className={`menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-black rounded-box w-44 absolute top-full right-0 ${
-            isDropdownOpen ? "block" : "hidden"
-          }`}
+        {/* logo max-w-screen-2xl mx-auto */}
+        <NavLink
+          to="/"
+          className="btn btn-ghost normal-case text-xl"
+          activeclassname="active-link"
         >
-          {navLinks}
-        </ul>
+          <img className="rounded-full w-10 h-10" src={logo} alt="" />
+          <span className="hidden md:block">Melody Dance Studio</span>
+          <span className="md:hidden">MDS</span>
+        </NavLink>
+
+        {/* regular links */}
+        <div className="ml-auto hidden lg:flex items-center space-x-2">
+          <ul className="menu menu-horizontal px-1 font-semibold">
+            {navLinks}
+          </ul>
+        </div>
+
+        {/* hamburger */}
+        <div className="dropdown ml-auto lg:hidden">
+          <button
+            tabIndex={0}
+            className="btn btn-ghost"
+            onClick={toggleDropdown}
+          >
+            {isDropdownOpen ? (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
+          <ul
+            tabIndex={0}
+            className={`menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-black rounded-box w-44 absolute top-full right-0 ${
+              isDropdownOpen ? "block" : "hidden"
+            }`}
+          >
+            {navLinks}
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

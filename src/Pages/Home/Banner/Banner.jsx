@@ -5,8 +5,7 @@ import anime from "animejs";
 import useData from "../../../Hooks/useData";
 
 const Banner = () => {
-  const [data] = useData();
-  const [classes] = [data];
+  const [classes] = useData();
 
   const [activeSlide, setActiveSlide] = useState(null);
   const textRef = useRef([]);
@@ -67,8 +66,12 @@ const Banner = () => {
         onChange={handleSlideChange}
       >
         {classes.slice(0, 6).map((cls, index) => (
-          <div key={index}>
-            <img src={cls.classImage} alt="" />
+          <div key={index} className="h-screen lg:h-auto">
+            <img
+              className="h-full w-full object-cover lg:h-screen"
+              src={cls.classImage}
+              alt="banner-image"
+            />
             <div
               className="absolute inset-0 flex flex-col items-center justify-center text-white"
               ref={(el) => (textRef.current[index] = el)}
