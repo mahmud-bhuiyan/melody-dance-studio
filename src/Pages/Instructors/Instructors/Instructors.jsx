@@ -1,6 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import InstructorsCard from "../InstructorsCard/InstructorsCard";
 import useData from "../../../Hooks/useData";
+import Headers from "../../../Components/Headers/Headers";
+import header from "../../../assets/bg/header.png";
 
 const Instructors = () => {
   const [data] = useData();
@@ -11,15 +13,12 @@ const Instructors = () => {
       <Helmet>
         <title>Instructors | Melody Dance Studio</title>
       </Helmet>
+      <Headers
+        backgroundImage={`${header}`}
+        pageTitle={"Instructors"}
+      ></Headers>
 
-      <div
-        className="bg-[url('https://i.ibb.co/fGMBFjr/bg-banner-2.png')] bg-cover bg-center text-center"
-        style={{ height: "220px" }}
-      >
-        <h3 className="text-4xl font-bold pt-32 text-white">Instructors</h3>
-      </div>
-
-      <div className="p-2 md:px-0 md:py-4">
+      <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
         {instructors.map((instructor) => (
           <InstructorsCard
             key={instructor._id}

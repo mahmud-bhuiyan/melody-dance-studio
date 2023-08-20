@@ -1,7 +1,7 @@
-const CommonButton = ({ name }) => {
+const CommonButton = ({ name, style }) => {
   return (
     <>
-      <button className="btn bg-[#F19797] w-48">{name}</button>
+      <button className={`btn bg-[#F19797] w-48 ${style}`}>{name}</button>
     </>
   );
 };
