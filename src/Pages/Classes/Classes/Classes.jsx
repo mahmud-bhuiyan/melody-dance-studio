@@ -85,7 +85,7 @@ const Classes = () => {
         className="bg-cover bg-center text-center"
         style={{
           backgroundImage: "url('https://i.ibb.co/fGMBFjr/bg-banner-2.png')",
-          height: "220px",
+          height: "250px",
           borderBottom: "5px solid #EA906C",
         }}
       >
@@ -116,12 +116,12 @@ const Classes = () => {
 
           return (
             <div
-              className={`card ${
+              className={`max-w-screen-xl mx-auto my-6 ${
                 availableSeats === 0 ? "bg-red-500 text-white" : "bg-[#f2f2f2]"
               } `}
               key={_id}
             >
-              <div className="card-body p-0 ">
+              <div className="card-body p-0">
                 <div
                   className={`flex flex-col md:flex-row ${
                     index % 2 === 0 ? "md:flex-row-reverse" : ""
@@ -131,17 +131,19 @@ const Classes = () => {
                     <img
                       src={classImage}
                       alt={className}
-                      className="w-full h-full object-cover"
+                      className="w-full h-64 object-cover"
                     />
                   </div>
                   <div className="md:w-1/2 p-4 flex flex-col justify-center">
-                    <h2 className="card-title text-xl mb-2">{className}</h2>
+                    <h2 className="card-title font-bold text-xl mb-2">
+                      {className}
+                    </h2>
                     <p className="mb-2">Instructor: {instructorName}</p>
                     <p className="mb-2">Available Seats: {remainingSeats}</p>
                     <p className="">Price: {price}</p>
                     <div className="card-actions">
                       <button
-                        className={`btn btn-sm btn-primary ${
+                        className={`btn btn-sm bg-[#F19797] text-black ${
                           availableSeats === 0 ||
                           (isAdmin && isLoggedIn) ||
                           (isInstructor && isLoggedIn) ||

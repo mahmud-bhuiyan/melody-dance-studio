@@ -30,7 +30,7 @@ const InstructorsCard = ({ instructor }) => {
             {className}
           </p>
           <div className="card-actions">
-            <CommonButton name={"See Classes"}></CommonButton>
+            <CommonButton name={"See Classes"} style={'btn-sm'}></CommonButton>
           </div>
         </div>
       </div>
