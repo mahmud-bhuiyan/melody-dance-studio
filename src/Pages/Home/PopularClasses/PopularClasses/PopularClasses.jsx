@@ -8,7 +8,7 @@ const PopularClasses = () => {
   const [classes] = useData();
 
   return (
-    <div className="py-20 bg-[#F9F9F7]">
+    <div className="pt-10 pb-16 bg-[#F9F9F7]">
       <SectionHeader
         firstPart={"Popular"}
         secondPart={"Classes"}
