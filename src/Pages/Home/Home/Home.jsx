@@ -5,6 +5,7 @@ import PopularClasses from "../PopularClasses/PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors/PopularInstructors";
 import Reviews from "../../Shared/Reviews/Reviews";
 import AboutSection from "../AboutSection/AboutSection";
+import FlyerSection from "../FlyerSection/FlyerSection";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <JoinUs></JoinUs>
       <AboutSection></AboutSection>
       <PopularClasses></PopularClasses>
+      <FlyerSection></FlyerSection>
       <PopularInstructors></PopularInstructors>
       <Reviews></Reviews>
     </div>

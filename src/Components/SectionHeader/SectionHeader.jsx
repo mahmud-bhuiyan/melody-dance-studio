@@ -1,10 +1,8 @@
-const SectionHeader = ({ firstPart, secondPart }) => {
+const SectionHeader = ({ firstPart, secondPart, styles }) => {
   return (
-    <div className="xl:flex flex-wrap gap-2">
-      <h1 className="text-xl md:text-3xl uppercase font-bold">{firstPart} </h1>
-      <h2 className="text-xl md:text-3xl  uppercase font-bold text-[#F19797]">
-        {secondPart}
-      </h2>
+    <div className={styles}>
+      <h1 className="uppercase font-bold">{firstPart} </h1>
+      <h2 className="uppercase font-bold text-[#F19797]">{secondPart}</h2>
     </div>
   );
 };
