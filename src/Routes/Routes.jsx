@@ -23,6 +23,7 @@ import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import MySelectedClasses from "../Pages/Dashboard/MySelectedClasses/MySelectedClasses";
 import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import AboutPage from "../Pages/AboutPage/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/about",
+        element: <AboutPage></AboutPage>,
       },
       {
         path: "/instructors",

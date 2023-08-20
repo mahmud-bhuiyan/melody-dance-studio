@@ -50,6 +50,11 @@ const Navbar = () => {
       </li>
 
       <li>
+        <NavLink to="/about" activeclassname="active-link" className="nav-link">
+          About
+        </NavLink>
+      </li>
+      <li>
         <NavLink
           to="/instructors"
           activeclassname="active-link"

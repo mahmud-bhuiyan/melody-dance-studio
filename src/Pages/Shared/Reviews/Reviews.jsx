@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import SectionHeader from "../../../Components/sectionHeader/sectionHeader";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -20,11 +21,12 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div className="text-center m-16 mx-auto">
-      <h3 className="my-8 py-6 font-bold text-3xl">
-        CLIENTS <br /> <span className="text-[#6DA9E4]">TESTIMONIALS</span>
-      </h3>
-
+    <div className="text-center pt-6 pb-14 max-w-screen-2xl mx-auto">
+      <SectionHeader
+        firstPart={"CLIENTS"}
+        secondPart={"TESTIMONIALS"}
+        styles={"flex flex-wrap gap-4 justify-center p-10 text-xl md:text-4xl"}
+      ></SectionHeader>
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -40,7 +42,7 @@ const Reviews = () => {
       >
         {reviews.map((review, index) => (
           <SwiperSlide key={index}>
-            <div className="grid md:grid-cols-12 px-6">
+            <div className="grid md:grid-cols-12 px-10">
               <div className="col-span-12">
                 <img
                   src={review.image}
