@@ -24,6 +24,7 @@ import MySelectedClasses from "../Pages/Dashboard/MySelectedClasses/MySelectedCl
 import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import AboutPage from "../Pages/AboutPage/AboutPage";
+import ContactUsPage from "../Pages/ContactUsPage/ContactUsPage";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup></Signup>,
+      },
+      {
+        path: "/contact",
+        element: <ContactUsPage></ContactUsPage>,
       },
     ],
   },
